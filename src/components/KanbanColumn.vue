@@ -13,7 +13,7 @@ const props = defineProps<{
 const { updateColumn } = useStore()
 const listItems = ref(props.tickets)
 
-const handleChange = (e: any) => {
+const handleChange = () => {
   updateColumn(props.columnIndex, listItems.value)
 }
 </script>

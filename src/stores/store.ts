@@ -58,4 +58,4 @@ export const useStore = defineStore('data', () => {
   }
 
   return { columns, addNewTicket, updateColumn }
-})
+}, { persist: true })
