@@ -10,11 +10,11 @@ const props = defineProps<{
   tickets: ITicket[]
 }>()
 
-const { updateColumn } = useStore()
+const store = useStore()
 const listItems = ref(props.tickets)
 
 const handleChange = () => {
-  updateColumn(props.columnIndex, listItems.value)
+  store.updateColumnTickets(props.columnIndex, listItems.value)
 }
 </script>
 
@@ -27,7 +27,7 @@ const handleChange = () => {
       v-model="listItems"
       group="tickets"
       @change="handleChange"
-      itemKey="name"
+      item-key="id"
     >
       <template #item="{ element }">
         <div class="draggable-card">{{ element.title }}</div>

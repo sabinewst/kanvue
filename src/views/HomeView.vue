@@ -9,8 +9,14 @@ const store = useStore()
 <template>
   <main>
     <div class="board">
-      <KanbanColumn v-for="(column, index) in store.columns" :title="column.title" :key="column.id" :tickets="column.tickets" :column-index="index"/>
+      <KanbanColumn
+        v-for="(column, index) in store.columns"
+        :key="column.id"
+        :title="column.title"
+        :tickets="column.tickets"
+        :column-index="index" />
     </div>
+    <button>New ticket</button>
   </main>
 </template>
 

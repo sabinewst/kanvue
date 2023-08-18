@@ -53,9 +53,9 @@ export const useStore = defineStore('data', () => {
     columns.value[0].tickets.push(ticket)
   }
 
-  function updateColumn(columnIndex: number, tickets: ITicket[]) {
+  function updateColumnTickets(columnIndex: number, tickets: ITicket[]) {
     columns.value[columnIndex].tickets = tickets
   }
 
-  return { columns, addNewTicket, updateColumn }
+  return { columns, addNewTicket, updateColumnTickets }
 }, { persist: true })
