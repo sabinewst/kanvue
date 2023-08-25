@@ -15,4 +15,8 @@ header {
   border-bottom: 1px solid black;
   margin-bottom: 50px;
 }
+
+h1 {
+  color: var(--green);
+}
 </style>

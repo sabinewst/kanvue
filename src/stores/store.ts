@@ -57,5 +57,13 @@ export const useStore = defineStore('data', () => {
     columns.value[columnIndex].tickets = tickets
   }
 
-  return { columns, addNewTicket, updateColumnTickets }
+  function editTicket(columnIndex: number, ticketIndex: number, ticket: ITicket) {
+    columns.value[columnIndex].tickets[ticketIndex] = ticket
+  }
+
+  function deleteTicket(columnIndex: number, ticketIndex: number) {
+    columns.value[columnIndex].tickets.splice(ticketIndex, 1)
+  }
+
+  return { columns, addNewTicket, updateColumnTickets, editTicket, deleteTicket }
 }, { persist: true })
