@@ -69,6 +69,7 @@ const handleSave = () => {
   background-color: var(--yellow);
   border: 1px solid var(--border);
   border-radius: 4px;
+  box-shadow: 2px 2px 2px grey;
   cursor: pointer;
   font-size: larger;
   margin: 16px 0;
@@ -100,5 +101,9 @@ textarea {
 .form-input {
   margin-bottom: 8px;
   width: 100%;
+}
+
+main {
+  padding: 2rem;
 }
 </style>
