@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useStore } from "@/stores/store";
-import type { ITicket } from "@/types";
-import { ref } from "vue";
-import draggable from "vuedraggable";
-import TicketModal from "./TicketModal.vue";
+import { useStore } from '@/stores/store'
+import type { ITicket } from '@/types'
+import { ref } from 'vue'
+import draggable from 'vuedraggable'
+import TicketModal from './TicketModal.vue'
 
 const props = defineProps<{
   columnIndex: number
@@ -18,7 +18,7 @@ const selectedTicket = ref({} as ITicket)
 const selectedTicketIndex = ref(0)
 
 const handleOpen = (ticket: ITicket, index: number) => {
-  selectedTicket.value = {...ticket}
+  selectedTicket.value = { ...ticket }
   selectedTicketIndex.value = index
   showModal.value = true
 }
@@ -62,7 +62,14 @@ const handleDelete = () => {
     </draggable>
   </div>
   <Teleport to="body">
-    <ticket-modal :id="'edit-ticket-modal'" :show="showModal" @close="handleClose" @save="handleSave" @delete="handleDelete" :disable-save="!selectedTicket.title" >
+    <ticket-modal
+      id="edit-ticket-modal"
+      :show="showModal"
+      :disable-save="!selectedTicket.title"
+      @close="handleClose"
+      @save="handleSave"
+      @delete="handleDelete"
+    >
       <template #header>
         <h3>Edit ticket</h3>
       </template>
@@ -71,7 +78,13 @@ const handleDelete = () => {
         <input required id="title" v-model="selectedTicket.title" class="form-input" />
 
         <label for="description">Description:</label>
-        <textarea id="description" v-model="selectedTicket.description" placeholder="You can add an optional description here." class="form-input" rows="10" />
+        <textarea
+          id="description"
+          v-model="selectedTicket.description"
+          placeholder="You can add an optional description here."
+          class="form-input"
+          rows="10"
+        />
       </template>
     </ticket-modal>
   </Teleport>
@@ -98,7 +111,7 @@ h2 {
   background-color: var(--lightyellow);
   border: 1px solid var(--border);
   box-shadow: 2px 2px 2px grey;
-  cursor:grab;
+  cursor: grab;
   border-radius: 4px;
   margin: 8px 0;
   padding: 32px 16px;

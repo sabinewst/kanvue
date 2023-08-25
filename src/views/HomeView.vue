@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
-import KanbanColumn from '@/components/KanbanColumn.vue';
-import { useStore } from '@/stores/store';
-import TicketModal from '@/components/TicketModal.vue';
+import { ref, reactive } from 'vue'
+import KanbanColumn from '@/components/KanbanColumn.vue'
+import { useStore } from '@/stores/store'
+import TicketModal from '@/components/TicketModal.vue'
 
 const store = useStore()
 const showModal = ref(false)
-const newTicket = reactive({ title: '', description: ''})
+const newTicket = reactive({ title: '', description: '' })
 
 const handleClose = () => {
   showModal.value = false
@@ -28,13 +28,22 @@ const handleSave = () => {
         :key="column.id"
         :title="column.title"
         :tickets="column.tickets"
-        :column-index="index" />
+        :column-index="index"
+      />
     </div>
-    <button id="show-modal" class="add-ticket-button" @click="showModal = true">Add new ticket</button>
+    <button id="show-modal" class="add-ticket-button" @click="showModal = true">
+      Add new ticket
+    </button>
   </main>
 
   <Teleport to="body">
-    <ticket-modal :id="'new-ticket-modal'" :show="showModal" @close="handleClose" @save="handleSave" :disable-save="!newTicket.title">
+    <ticket-modal
+      id="new-ticket-modal"
+      :show="showModal"
+      @close="handleClose"
+      @save="handleSave"
+      :disable-save="!newTicket.title"
+    >
       <template #header>
         <h3>Create new ticket</h3>
       </template>
@@ -43,7 +52,13 @@ const handleSave = () => {
         <input required id="title" v-model="newTicket.title" class="form-input" />
 
         <label for="description">Description:</label>
-        <textarea id="description" v-model="newTicket.description" placeholder="You can add an optional description here." class="form-input" rows="10" />
+        <textarea
+          id="description"
+          v-model="newTicket.description"
+          placeholder="You can add an optional description here."
+          class="form-input"
+          rows="10"
+        />
       </template>
     </ticket-modal>
   </Teleport>
@@ -63,7 +78,6 @@ const handleSave = () => {
     background-color: var(--yellow-2);
   }
 }
-
 
 .board {
   display: flex;

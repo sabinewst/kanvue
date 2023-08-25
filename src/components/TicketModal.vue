@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-defineProps({
-  id: String,
-  disableSave: Boolean,
-  show: Boolean
-})
+defineProps<{
+  id: string
+  disableSave: boolean
+  show: boolean
+}>()
 </script>
 
 <template>
@@ -21,14 +21,18 @@ defineProps({
         <div class="modal-footer">
           <slot name="footer">
             <div>
-              <button
-                class="button-save"
-                :disabled="disableSave"
-                @click="$emit('save')"
-              >Save</button>
+              <button class="button-save" :disabled="disableSave" @click="$emit('save')">
+                Save
+              </button>
               <button class="button-close" @click="$emit('close')">Close</button>
             </div>
-            <button v-if="id === 'edit-ticket-modal'" class="button-delete" @click="$emit('delete')">Delete</button>
+            <button
+              v-if="id === 'edit-ticket-modal'"
+              class="button-delete"
+              @click="$emit('delete')"
+            >
+              Delete
+            </button>
           </slot>
         </div>
       </div>
